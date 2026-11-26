@@ -1,22 +1,17 @@
-Filip Saltsidis portfolio: upload everything in this folder to the GitHub repo filipposigma.github.io
-(index.html must sit at the top level, next to style.css, img/ and work/).
+Portfolio v7 (built from the Figma SVGs: home, about, Capital City College)
 
-Do NOT add a CNAME file yet. Add your domain later in GitHub: Settings > Pages > Custom domain.
+Upload to the repo root (same names replace the old files):
+  index.html, about.html, 404.html, style.css, build.py, README.txt, img/, work/, fonts/
 
-Amber text = placeholders to replace. Edit the .html files directly, or edit build.py and run: python3 build.py
-Before sharing publicly: get permission for AND London / General Projects work, replace the email and LinkedIn links,
-check every number, and add the leaflet and report images (img/leaflet.png, img/report-1.png, img/report-2.png).
-work/size-guide.html is built but not linked from the home page.
+Pages: index.html, about.html, work/dashboard.html, 404.html
+Images in use: img/ccc-hero.jpg, img/ccc-dashboard-large.jpg, img/home/ccc-cover.jpg
 
-v2: home and About rebuilt from the Figma designs (DM Sans). The black dot links Home -> About and every other page -> Home.
-The Capital City College image (img/home/ccc-cover.jpg) was cropped from your homepage PNG: replace it with your original file of the same name.
-The case-study pages in work/ still use the older layout and will be rebuilt later.
+FONT
+Design font: Neue Haas Grotesk Text Pro 55 Roman. Its licence file says desktop use only, so it is NOT in this zip.
+Until a web licence is bought, the site shows Inter (fonts/Inter-Regular.woff, open licence), scaled to a similar width.
+Once you have a web licence, put these files in the fonts/ folder and the site uses them automatically (no code change):
+  fonts/NHaasGroteskTXPro-55Rg.woff2   (preferred)
+  fonts/NHaasGroteskTXPro-55Rg.woff
 
-v3: Capital City College project page rebuilt from the new design (work/dashboard.html). Hero and large image are crops from your PNG with the baked-in header removed:
-  img/ccc-hero.jpg, img/ccc-dashboard-large.jpg  -> replace with your originals of the same names.
-The intro paragraph shows 4 lines; if the text is longer a 'Read more' / 'Read less' link appears.
-
-v4: type sizes and positions on the project page now match the SVG (title 38/500, intro 24/500 with 31 line height, details 16/500 with 20 line height, name 30/600, dot 22px).
-img/ccc-hero.jpg and img/ccc-dashboard-large.jpg are now rendered straight from your SVG, so no header text remains in the hero.
-
-v5: About page rebuilt from about_pagev2.svg (grey page, green panel). Intro 37/45 medium, body 24/31 medium, name 30 semibold. Bullets, contact and credit sit inside the green panel.
+Grey blocks on the home and project pages are placeholders from the Figma layout.
+Removed from this version: work/singer-street.html, work/size-guide.html (delete them on GitHub if you want them gone).
