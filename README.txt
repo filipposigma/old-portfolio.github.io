@@ -18,3 +18,5 @@ The intro paragraph shows 4 lines; if the text is longer a 'Read more' / 'Read l
 
 v4: type sizes and positions on the project page now match the SVG (title 38/500, intro 24/500 with 31 line height, details 16/500 with 20 line height, name 30/600, dot 22px).
 img/ccc-hero.jpg and img/ccc-dashboard-large.jpg are now rendered straight from your SVG, so no header text remains in the hero.
+
+v5: About page rebuilt from about_pagev2.svg (grey page, green panel). Intro 37/45 medium, body 24/31 medium, name 30 semibold. Bullets, contact and credit sit inside the green panel.

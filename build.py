@@ -53,12 +53,13 @@ home = head("Filippos Saltsidis · UX/UI designer, London",
 write("index.html", home)
 
 # ---------------------------------------------------------------- ABOUT
-about = head("About · Filippos Saltsidis", "About Filippos Saltsidis, a London-based UX/UI designer with more than fifteen years of experience.", "", "v2") + nav("", "about") + '''
-<main class="about">
-<p class="contact"><a href="tel:+447707354630">(+44) 77 07 35 46 30</a><br><a href="mailto:filipposaltsidis@icloud.com">filipposaltsidis@icloud.com</a></p>
+about = head("About · Filippos Saltsidis", "About Filippos Saltsidis, a London-based UX/UI designer with more than fifteen years of experience.", "", "v2 aboutpage") + nav("", "about") + '''
+<main class="ab">
+<section class="ab-intro">
 <p>I'm Filippos Saltsidis, a London-based UX/UI designer with more than fifteen years of experience in graphic, brand and digital design. I started in print and packaging, ran my own studio, and moved steadily into websites, interfaces and design systems, working with clients and teams in Greece, Berlin and London.</p>
-<p>I work best at the start of a project, when the problem isn't clear yet. Before I open Figma, I try to understand who the product is for, what they're trying to do and where they get stuck. Then I turn that into structure: clear hierarchy, simple flows and components a team can reuse and build.</p>
-<p>My background in print and brand shows in the details. Typography, spacing and consistency matter to me, and I design with production in mind. After years of working with developers, marketing teams and clients, I'm used to turning a brief into something that ships.</p>
+</section>
+<section class="ab-body">
+<p>I work best at the start of a project, when the problem isn't clear yet. Before I open Figma, I try to understand who the product is for, what they're trying to do and where they get stuck. Then I turn that into structure: clear hierarchy, simple flows and components a team can reuse and build. My background in print and brand shows in the details. Typography, spacing and consistency matter to me, and I design with production in mind. After years of working with developers, marketing teams and clients, I'm used to turning a brief into something that ships.</p>
 <ul>
 <li>Understand users and define the problem</li>
 <li>Map flows and structure information</li>
@@ -66,7 +67,9 @@ about = head("About · Filippos Saltsidis", "About Filippos Saltsidis, a London-
 <li>Build reusable components and light design systems</li>
 <li>Hand over to developers with clear specs and states</li>
 </ul>
+<p class="contact"><a href="tel:+447707354630">(+44) 77 07 35 46 30</a><br><a href="mailto:filipposaltsidis@icloud.com">filipposaltsidis@icloud.com</a></p>
 <p class="credit">Website Programming<br>Filippos Saltsidis</p>
+</section>
 </main>
 ''' + "</body></html>\n"
 write("about.html", about)
@@ -236,6 +239,6 @@ write("work/size-guide.html", sg)
 
 # 404
 write("404.html", head("Page not found · Filippos Saltsidis", "Page not found.", "", "v2") + nav("", "404", ("index.html","Home")) + '''
-<main class="about"><p>That page doesn't exist. <a href="index.html">Back to the home page</a>.</p></main>
+<main class="plain"><p>That page doesn't exist. <a href="index.html">Back to the home page</a>.</p></main>
 ''' + "</body></html>\n")
 print("built")
