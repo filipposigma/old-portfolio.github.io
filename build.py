@@ -6,7 +6,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 
 FAV = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231A1816'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' text-anchor='middle' fill='%23E4532C'%3EF%3C/text%3E%3C/svg%3E"
 
-def head(title, desc, p):
+def head(title, desc, p, cls=""):
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -14,21 +14,22 @@ def head(title, desc, p):
 <meta name="description" content="{desc}">
 <meta property="og:title" content="{title}"><meta property="og:description" content="{desc}">
 <link rel="icon" href="{FAV}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{p}style.css">
-</head><body>
+</head><body class="{cls}">
 '''
 
-def nav(p, cur=""):
-    a = lambda k, href, label: f'<a href="{href}"' + (' aria-current="page"' if cur == k else '') + f'>{label}</a>'
-    return f'''<nav><div class="w"><a class="logo" href="{p}index.html">Filip Saltsidis</a>
-{a("work", p + "index.html#work", "Work")}{a("about", p + "about.html", "About")}<a class="btn" href="{p}index.html#contact">Get in touch</a></div></nav>
+def nav(p, cur="", dot=None):
+    # Black dot, top right: home -> About page, every other page -> Home
+    if dot is None:
+        dot = ("about.html", "About") if cur == "home" else ("index.html", "Home")
+    href, label = dot
+    return f'''<header class="site-head"><a class="name" href="{p}index.html">Filippos Saltsidis</a><a class="dot" href="{p}{href}" aria-label="{label}" title="{label}"></a></header>
 '''
 
 def foot(p):
-    return f'''<footer><div class="w"><div class="row"><span>© 2026 Filip Saltsidis · London</span>
-<span><a href="mailto:hello@filipposaltsidis.com">Email</a> · <a href="https://www.linkedin.com/in/your-profile">LinkedIn</a> · <a href="{p}index.html#work">Work</a></span></div></div></footer>
+    return '''<footer class="foot2"><a href="mailto:filipposaltsidis@icloud.com">filipposaltsidis@icloud.com</a><a href="tel:+447707354630">(+44) 77 07 35 46 30</a></footer>
 </body></html>
 '''
 
@@ -37,77 +38,37 @@ def write(path, html):
     os.makedirs(os.path.dirname(full), exist_ok=True)
     open(full, "w", encoding="utf-8").write(html)
 
-CONTACT = '''<section id="contact"><div class="w"><div class="contact-box">
-<div class="k" style="color:#ffd36b">Contact</div>
-<h2>Let’s talk about your product</h2>
-<p>I’m looking for my first full-time UX/UI or product design role in tech, fintech or a startup. <span class="ph">[Edit: one line on what you’re open to, e.g. London, hybrid, remote.]</span></p>
-<a class="btn" href="mailto:hello@filipposaltsidis.com">hello@filipposaltsidis.com</a>
-</div></div></section>
-'''
-
 # ---------------------------------------------------------------- HOME
-home = head("Filip Saltsidis · UX/UI designer, London",
-            "UX/UI designer with 15+ years in digital and print design. Case studies in product, dashboards and fintech.", "") + nav("") + '''
-<header class="hero"><div class="w">
-<span class="tag">UX/UI designer · London</span>
-<h1>I design clear, trustworthy products for people who just want to get things done</h1>
-<p class="lead">15+ years in graphic and digital design, now focused on UX and product design. <span class="ph">[Edit: one line on what you want to be hired for, e.g. fintech and startup products.]</span></p>
-<div class="cta"><a class="btn" href="#work">See my work</a><a class="btn ghost" href="about.html">About me</a></div>
-</div></header>
-
-<section id="work"><div class="w">
-<div class="k">Selected work</div><h2>Case studies</h2>
-<div class="projects">
-
-<a class="project" href="work/dashboard.html">
-<div class="pimg"><img src="img/dashboard-redesign.jpg" alt="Redesigned student dashboard for Capital City College" loading="lazy"></div>
-<div><span class="tag">UX/UI · Education · Dashboard</span><h3>Redesigning a college dashboard students actually use</h3>
-<p>Research with students, a new information structure and a simpler dashboard, including a feature to report an absence in two taps.</p><span class="more">Read case study →</span></div></a>
-
-<a class="project" href="work/singer-street.html">
-<div class="pimg"><img src="img/redesign-02-scheme-overview.png" alt="Redesigned Scheme Overview slide" loading="lazy"></div>
-<div><span class="tag">Presentation and print · Real estate</span><h3>One scheme, three ways to tell its story</h3>
-<p>A strategy deck, a data report and a community leaflet for a Shoreditch scheme, each designed for a different audience.</p><span class="more">Read case study →</span></div></a>
-
-<div class="project soon">
-<div class="pimg">Next project: a fintech case study</div>
-<div><span class="tag">Coming soon</span><h3>A mobile fintech project</h3>
-<p><span class="ph">[Replace this card with your next project when it is ready, or delete it.]</span></p></div></div>
-
-</div></div></section>
-
-<section id="about"><div class="w"><div class="about-grid">
-<div><div class="k">About</div><h2>From print and brand to product</h2></div>
-<div><p>I’m a designer with more than 15 years’ experience across print, brand and digital work, including a senior design role at AND London. I’m now building on that foundation with UX research, interaction design and front-end skills.</p>
-<p><span class="ph">[Edit: two sentences on how you work, e.g. start with evidence, test early, explain every decision.]</span></p>
-<div class="chips"><span class="chip">UX research</span><span class="chip">Interaction design</span><span class="chip">Design systems</span><span class="chip">Figma</span><span class="chip">HTML and CSS</span></div>
-<p style="margin-top:24px"><a href="about.html"><b>More about me →</b></a></p></div>
-</div></div></section>
-''' + CONTACT + foot("")
+home = head("Filippos Saltsidis · UX/UI designer, London",
+            "Filippos Saltsidis is a London-based UX/UI designer. Selected work and contact details.", "", "v2") + nav("", "home") + '''
+<main class="home">
+<a class="card2" href="work/dashboard.html">
+<div class="im"><img src="img/home/ccc-cover.jpg" alt="Redesigned Capital City College student dashboard shown on a laptop"></div>
+<div class="cap">Capital City College</div></a>
+<div class="card2">
+<div class="im"></div>
+<div class="cap">Next Project</div></div>
+</main>
+''' + foot("")
 write("index.html", home)
 
 # ---------------------------------------------------------------- ABOUT
-about = head("About · Filip Saltsidis", "About Filip Saltsidis, UX/UI designer in London.", "") + nav("", "about") + '''
-<header class="top"><div class="w">
-<span class="tag">About</span>
-<h1>Designer first, now building products end to end</h1>
-<p class="lead"><span class="ph">[Edit: a short, personal intro in your own voice, 2–3 sentences.]</span></p></div></header>
-
-<section><div class="w"><div class="about-grid">
-<div><div class="k">My story</div><h2>How I got here</h2></div>
-<div>
-<p>I started in graphic design and spent over 15 years working in print, brand and digital, rising to a senior design role at AND London.</p>
-<p><span class="ph">[Edit: why you moved towards UX and product design, what you’ve learned, and what you want to do next. Keep it honest and specific.]</span></p>
-<p>I’m studying computer science alongside design, so I can talk to developers in their own language and build working prototypes. <span class="ph">[Check this line is still right for you.]</span></p>
-</div></div></div></section>
-
-<section><div class="w"><div class="k">What I do</div><h2>Skills</h2>
-<div class="grid g3">
-<div class="card"><h3>Research</h3><p>Interviews, surveys, usability tests and heuristic reviews, with honest counts of what I did.</p></div>
-<div class="card"><h3>Design</h3><p>Information architecture, wireframes, interface design and design systems in Figma.</p></div>
-<div class="card"><h3>Build</h3><p>HTML, CSS and prototypes, so ideas can be checked in a browser, not only on a canvas.</p></div>
-</div></div></section>
-''' + CONTACT + foot("")
+about = head("About · Filippos Saltsidis", "About Filippos Saltsidis, a London-based UX/UI designer with more than fifteen years of experience.", "", "v2") + nav("", "about") + '''
+<main class="about">
+<p class="contact"><a href="tel:+447707354630">(+44) 77 07 35 46 30</a><br><a href="mailto:filipposaltsidis@icloud.com">filipposaltsidis@icloud.com</a></p>
+<p>I'm Filippos Saltsidis, a London-based UX/UI designer with more than fifteen years of experience in graphic, brand and digital design. I started in print and packaging, ran my own studio, and moved steadily into websites, interfaces and design systems, working with clients and teams in Greece, Berlin and London.</p>
+<p>I work best at the start of a project, when the problem isn't clear yet. Before I open Figma, I try to understand who the product is for, what they're trying to do and where they get stuck. Then I turn that into structure: clear hierarchy, simple flows and components a team can reuse and build.</p>
+<p>My background in print and brand shows in the details. Typography, spacing and consistency matter to me, and I design with production in mind. After years of working with developers, marketing teams and clients, I'm used to turning a brief into something that ships.</p>
+<ul>
+<li>Understand users and define the problem</li>
+<li>Map flows and structure information</li>
+<li>Design responsive interfaces and prototypes in Figma</li>
+<li>Build reusable components and light design systems</li>
+<li>Hand over to developers with clear specs and states</li>
+</ul>
+<p class="credit">Website Programming<br>Filippos Saltsidis</p>
+</main>
+''' + "</body></html>\n"
 write("about.html", about)
 
 # ---------------------------------------------------------------- SINGER STREET
@@ -179,7 +140,7 @@ ss = head("Singer Street · Print and presentation design · Filip Saltsidis",
 </div></section>
 
 <footer><div class="w"><p class="fn">Layouts shown were redesigned in 2026 from work originally produced in 2022 at AND London.</p>
-<div class="row"><span><a href="../index.html#work">← All work</a></span><span><a href="dashboard.html">Next project →</a></span></div></div></footer>
+<div class="row"><span><a href="../index.html">← All work</a></span><span><a href="dashboard.html">Next project →</a></span></div></div></footer>
 </body></html>
 '''
 write("work/singer-street.html", ss)
@@ -236,7 +197,7 @@ db = head("College dashboard redesign · UX/UI case study · Filip Saltsidis",
 <ul class="c"><li><span class="ph">[e.g. test the absence flow with more students]</span></li><li><span class="ph">[e.g. explore an AI help feature]</span></li></ul></div>
 </div></section>
 
-<footer><div class="w"><div class="row"><span><a href="singer-street.html">← Previous project</a></span><span><a href="../index.html#work">All work →</a></span></div></div></footer>
+<footer><div class="w"><div class="row"><span><a href="singer-street.html">← Previous project</a></span><span><a href="../index.html">All work →</a></span></div></div></footer>
 </body></html>
 '''
 write("work/dashboard.html", db)
@@ -281,13 +242,13 @@ sg = head("Size guide redesign · UX/UI case study · Filip Saltsidis",
 <ul class="c"><li>Large tap targets</li><li>Numeric input for measurements</li><li>Primary action fixed at the bottom</li></ul></div>
 </div></div></section>
 
-<footer><div class="w"><div class="row"><span><a href="../index.html#work">← All work</a></span></div></div></footer>
+<footer><div class="w"><div class="row"><span><a href="../index.html">← All work</a></span></div></div></footer>
 </body></html>
 '''
 write("work/size-guide.html", sg)
 
 # 404
-write("404.html", head("Page not found · Filip Saltsidis", "Page not found.", "") + nav("") + '''
-<header class="hero"><div class="w"><span class="tag">404</span><h1>That page doesn’t exist</h1><p class="lead">Try the <a href="index.html">home page</a> or my <a href="index.html#work">work</a>.</p></div></header>
-''' + foot(""))
+write("404.html", head("Page not found · Filippos Saltsidis", "Page not found.", "", "v2") + nav("", "404", ("index.html","Home")) + '''
+<main class="about"><p>That page doesn't exist. <a href="index.html">Back to the home page</a>.</p></main>
+''' + "</body></html>\n")
 print("built")
