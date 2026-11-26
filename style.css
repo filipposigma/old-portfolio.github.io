@@ -181,3 +181,49 @@ body.aboutpage{background:#EDEDED}
  .ab-body p,.ab-body ul{font-size:18px;line-height:27px;margin-bottom:27px}
  .ab-body li{padding-left:28px}.ab-body li::before{left:10px}
 }
+
+
+/* ===== case-study layout (structure, margins and type taken from the reference page; font stays DM Sans) ===== */
+.cs{display:block;padding:0}
+.cs .cs-hero{position:relative;width:100%;height:0;padding:0 0 68.599%;overflow:hidden}
+.cs .cs-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cs .cs-wrap{margin:0 auto;padding:0 22px}
+.cs .cs-details{display:flex;flex-flow:column wrap}
+.cs .cs-head{order:1;width:100%;margin:25px 0 30px}
+.cs .cs-head h1{font-size:25.5px;line-height:32px;font-weight:400;letter-spacing:0;margin:0;max-width:1024px}
+.cs .cs-meta{order:2}
+.cs .cs-meta h2{font-size:17px;line-height:28px;font-weight:400;margin:0}
+.cs .cs-meta p{font-size:14px;line-height:18px;margin:0 0 1em}
+.cs .cs-meta .item{margin:0 0 20px}
+.cs .cs-content{order:3;margin:10px 0 80px}
+.cs .cs-content p{font-size:17px;line-height:24px;font-weight:400;margin:0 0 1em}
+.cs .cs-content p.clamp{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.cs .cs-content .more{display:inline;margin:0;padding:0;font-size:17px;line-height:24px;font-weight:400;text-decoration:underline;text-underline-offset:auto;text-decoration-thickness:auto}
+.cs .cs-content .more[hidden]{display:inline;visibility:hidden}
+.cs .cs-media{position:relative;width:100%;height:0;padding:0 0 56.25%;overflow:hidden;margin:0 0 60px}
+.cs .cs-media.r32{padding-bottom:66.6667%}
+.cs .cs-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cs .cs-pair{display:flex;gap:22px;margin:0 11% 60px}
+.cs .cs-pair .cs-media{padding-bottom:113.7%;margin:0;flex:1}
+.cs-more{background:#000;color:#fff;margin-top:40px}
+.cs-more h2{font-size:25.5px;line-height:32px;font-weight:400;margin:0;padding:25px 0 0}
+.cs-more .links{padding:60px 0 60px;display:flex;flex-wrap:wrap}
+.cs-more a{color:#fff;font-size:17px;line-height:25px;text-decoration:underline;margin:0 10px 8px 0}
+@media(min-width:768px){
+ .cs .cs-hero{padding-bottom:46.9253%}
+ .cs .cs-details{flex-direction:row}
+ .cs .cs-head{margin:25px 0 50px}
+ .cs .cs-head h1{font-size:37.5px;line-height:40px}
+ .cs .cs-meta{width:33.3333%;max-width:444px;padding:0 50px 0 0}
+ .cs .cs-meta h2{font-size:25px;line-height:32px}
+ .cs .cs-meta p{font-size:18px;line-height:23px;margin:0 0 18px}
+ .cs .cs-meta .item{margin:0 0 40px}
+ .cs .cs-content{width:66.6667%;max-width:900px;margin:0 0 120px}
+ .cs .cs-content p,.cs .cs-content .more{font-size:25px;line-height:32px;margin-bottom:25px}
+ .cs .cs-content .more{margin-bottom:0}
+ .cs .cs-media,.cs .cs-pair{margin-bottom:100px}
+ .cs-more{margin-top:0}
+ .cs-more h2{font-size:37.5px;line-height:45px}
+ .cs-more .links{padding:125px 0 100px}
+ .cs-more a{font-size:25px;line-height:32px;margin:0 20px 17px 0}
+}
