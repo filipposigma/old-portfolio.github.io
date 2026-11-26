@@ -11,11 +11,29 @@
 <main class="ab">
 <div class="col1">
 <p>I'm Filippos Saltsidis, a London-based UX/UI designer with more than fifteen years of experience in graphic, brand and digital design. I started in print and packaging, ran my own studio, and moved steadily into websites, interfaces and design systems, working with clients and teams in Greece, Berlin and London.</p>
-<p>I work best at the start of a project, when the problem isn't clear yet. Before I open Figma, I try to understand who the product is for, what they're trying to do and where they get stuck. Then I turn that into structure: clear hierarchy, simple flows and components a team can reuse and build. My background in print and brand shows in the details. Typography, spacing and consistency matter to me, and I design with production in mind. After years of working with developers, marketing teams and clients, I'm used to turning a brief into something that ships.</p>
+<p>I work best at the start of a project, when the problem isn't clear yet. Before I open Figma, I try to understand who the product is for, what they're trying to do and where they get stuck. Then I turn that into structure: clear hierarchy, simple flows and components a team can reuse and build.</p>
 </div>
 <div class="col2">
 <p><a href="tel:+447707354630">(+44) 77 07 35 46 30</a><a href="mailto:filipposaltsidis@icloud.com">filipposaltsidis@icloud.com</a></p>
 <p>Website Programming<br>Filippos Saltsidis</p>
 </div>
 </main>
+<script>
+(function(){
+  var h=document.querySelector(".site-head"); if(!h) return;
+  var hero=document.querySelector(".cs-hero"), last=window.scrollY, busy=false;
+  function update(){
+    var y=window.scrollY;
+    if(y<=8){ h.classList.remove("hide"); last=y; }
+    else if(Math.abs(y-last)>=6){
+      h.classList.toggle("hide", y>last);
+      last=y;
+    }
+    if(hero) h.classList.toggle("over", y < hero.offsetHeight-h.offsetHeight);
+    busy=false;
+  }
+  window.addEventListener("scroll",function(){ if(!busy){ busy=true; requestAnimationFrame(update); } },{passive:true});
+  window.addEventListener("resize",update); update();
+})();
+</script>
 </body></html>

@@ -1,65 +1,67 @@
-/* Portfolio v8: built from the Figma SVGs (1440 wide). Type: Inter Medium (open licence, self-hosted). */
+/* Portfolio v9: built from the Figma v2 designs (1440 wide). Type: Inter Medium (open licence, self-hosted). */
 @font-face{font-family:"Inter";font-weight:500;font-style:normal;font-display:swap;src:url("fonts/Inter-Medium.woff") format("woff")}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#EDEDED;color:#000;font-family:Inter,Helvetica,Arial,sans-serif;font-weight:500;font-size:16px;line-height:18px;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{--bg:#EDEDED;margin:0;background:var(--bg);color:#000;font-family:Inter,Helvetica,Arial,sans-serif;font-weight:500;font-size:16px;line-height:21px;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body.cspage{--bg:#fff}
 a{color:inherit;text-decoration:none}
-a:hover{text-decoration:underline}
 a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offset:4px}
 img{display:block;max-width:100%}
 p,ul,h1,h2{margin:0;padding:0}
 ul{list-style:none}
 main{flex:1}
 
-/* ---------- header ---------- */
-.site-head{display:flex;justify-content:space-between;padding:16px 20px 0}
+/* ---------- header: hides on scroll down, returns on scroll up ---------- */
+.site-head{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;padding:14px 20px 12px;background:var(--bg);transition:transform .3s ease,background-color .2s ease,color .2s ease}
+.site-head.hide{transform:translateY(-100%)}
+.site-head:focus-within{transform:none}
+.site-head.over{background:transparent;color:#fff}
+@media(prefers-reduced-motion:reduce){.site-head{transition:none}}
 
 /* ---------- home ---------- */
-.intro{padding:0 20px;margin-top:17px}
-.cards{display:grid;grid-template-columns:1fr;gap:40px;padding:0 20px;margin-top:16px}
+.cards{display:grid;grid-template-columns:1fr;gap:40px;padding:0 20px;margin-top:72px}
 .card{display:block}
-.card:hover{text-decoration:none}
 .card .im{aspect-ratio:690/480;background:#C9C9C8;overflow:hidden}
 .card .im img{width:100%;height:100%;object-fit:cover}
-.card .cap{margin-top:16px}
+.card .cap{margin-top:14px}
 .home-end{height:60px}
 
-/* ---------- about ---------- */
-.ab{padding:40px 20px 80px;display:grid;grid-template-columns:1fr;gap:32px;font-size:17px;line-height:24px}
-.ab p{margin:0 0 24px}
+/* ---------- info ---------- */
+.ab{padding:80px 20px 80px;display:grid;align-content:start;grid-template-columns:1fr;gap:21px}
+.ab p{margin:0 0 21px}
 .ab a{display:block;width:max-content}
 .ab .col2 p:last-child{margin:0}
 
 /* ---------- case study ---------- */
-body.cspage{background:#fff}
-.cs-title{padding:40px 20px 0;text-align:center;font-size:25.5px;line-height:32px;font-weight:500;color:#702DFF}
-.cs-lead{padding:0 20px;margin:24px auto 0;text-align:center;font-size:17px;line-height:24px}
+.cs-hero{width:100%;aspect-ratio:1440/790;background:#B0B0B0;overflow:hidden}
+.cs-hero img{width:100%;height:100%;object-fit:cover}
+.cs-title{padding:24px 20px 0;font-size:25.5px;line-height:32px;font-weight:500;color:#702DFF}
+.cs-lead{padding:0 20px;margin-top:20px}
 .cs-lead p.clamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
 .more{display:inline-block;padding:0;margin:12px 0 0;background:none;border:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
-.more[hidden]{display:inline-block;visibility:hidden}
+.more[hidden]{display:none}
+.cs-meta{padding:0 20px;margin-top:24px;font-size:14px;line-height:19px;color:#6F6F6F}
 .cs-blocks{padding:0 20px;margin-top:60px}
 .blk{width:100%;margin:0 0 60px;background:#B0B0B0;overflow:hidden}
-.blk img{width:100%;height:100%;object-fit:cover}
-.blk.b1{aspect-ratio:1400/790}
 .blk.b2,.blk.b3{aspect-ratio:1400/930}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 60px}
 .pair .blk{aspect-ratio:548/612;margin:0}
-.pair{margin:0 0 60px}
-.cs-meta{padding:0 20px 80px}
+.cs-end{height:60px}
 
 @media(min-width:768px){
- body{font-size:16px}
- .site-head{display:grid;grid-template-columns:50.893% 1fr}
- .cards{grid-template-columns:1fr 1fr;gap:71.057px 20px}
- .home-end{height:128px}
- .ab{grid-template-columns:50.893% 1fr;gap:0;font-size:25px;line-height:32px;padding:69px 20px 80px}
- .ab .col1{max-width:687px}
- .ab p{margin-bottom:32px}
- .cs-title{font-size:37px;line-height:46px;padding-top:69px}
- .cs-lead{max-width:875px;font-size:25px;line-height:32px;margin-top:31px}
- .cs-blocks{margin-top:101px}
+ body{font-size:18px;line-height:23.5px}
+ .site-head{display:grid;grid-template-columns:50.893% 1fr;padding:16.4px 20px 12px}
+ .cards{grid-template-columns:1fr 1fr;gap:65.057px 20px;margin-top:103px}
+ .card .cap{margin-top:16px}
+ .home-end{height:123px}
+ .ab{grid-template-columns:50.893% 1fr;gap:0;padding:103px 20px 80px}
+ .ab .col1{max-width:690px}
+ .ab p{margin-bottom:23.5px}
+ .cs-title{font-size:37px;line-height:46px;padding-top:24.7px}
+ .cs-lead{max-width:855px;margin-top:23px}
+ .cs-meta{font-size:16px;line-height:21.45px;margin-top:25.7px}
+ .cs-blocks{margin-top:170.5px}
  .blk,.pair{margin-bottom:100px}
  .pair{margin-left:10.1429%;margin-right:10.1429%;gap:20px}
- .blk.b3{margin-bottom:17px}
- .cs-meta{padding-bottom:220px}
+ .cs-end{height:344px}
 }

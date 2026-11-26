@@ -9,4 +9,22 @@
 </head><body class="">
 <header class="site-head"><a href="/index.html">Filippos Saltsidis</a><a href="/about.html">Info</a></header>
 <main class="ab"><div class="col1"><p>Page not found.</p><p><a href="/index.html">Back to the work</a></p></div></main>
+<script>
+(function(){
+  var h=document.querySelector(".site-head"); if(!h) return;
+  var hero=document.querySelector(".cs-hero"), last=window.scrollY, busy=false;
+  function update(){
+    var y=window.scrollY;
+    if(y<=8){ h.classList.remove("hide"); last=y; }
+    else if(Math.abs(y-last)>=6){
+      h.classList.toggle("hide", y>last);
+      last=y;
+    }
+    if(hero) h.classList.toggle("over", y < hero.offsetHeight-h.offsetHeight);
+    busy=false;
+  }
+  window.addEventListener("scroll",function(){ if(!busy){ busy=true; requestAnimationFrame(update); } },{passive:true});
+  window.addEventListener("resize",update); update();
+})();
+</script>
 </body></html>

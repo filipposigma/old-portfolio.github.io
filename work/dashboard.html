@@ -7,19 +7,13 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' text-anchor='middle' fill='%23fff'%3EF%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="../style.css">
 </head><body class="cspage">
-<header class="site-head"><a href="../index.html">Filippos Saltsidis</a><a href="../about.html">Info</a></header>
+<header class="site-head over"><a href="../index.html">Filippos Saltsidis</a><a href="../about.html">Info</a></header>
 <main>
+<div class="cs-hero"><img src="../img/ccc-dashboard-large.jpg" alt="The redesigned dashboard: next lesson, student services, attendance overview and the report an absence button"></div>
 <h1 class="cs-title">Redesigning a college dashboard students actually use</h1>
 <div class="cs-lead">
 <p id="lead">Students open the college portal to find their next lesson, but the old dashboard buries it in a wall of tiles. I redesigned the Capital City College student dashboard so students can find their next lesson, messages and attendance quickly, and report an absence without hunting for it.</p>
 <button class="more" type="button" aria-controls="lead" aria-expanded="false" hidden>read more</button>
-</div>
-<div class="cs-blocks">
-<figure class="blk b1" style="margin-top:0"><img src="../img/ccc-dashboard-large.jpg" alt="The redesigned dashboard: next lesson, student services, attendance overview and the report an absence button"></figure>
-<!-- Placeholders from the Figma layout: replace with project images -->
-<div class="blk b2" role="presentation"></div>
-<div class="pair"><div class="blk" role="presentation"></div><div class="blk" role="presentation"></div></div>
-<div class="blk b3" role="presentation"></div>
 </div>
 <ul class="cs-meta">
 <li>Role: UX/UI Designer</li>
@@ -28,6 +22,13 @@
 <li>Tools: Figma</li>
 <li>Platform: Desktop and mobile</li>
 </ul>
+<div class="cs-blocks">
+<!-- Placeholders from the Figma layout: replace with project images -->
+<div class="blk b2" role="presentation"></div>
+<div class="pair"><div class="blk" role="presentation"></div><div class="blk" role="presentation"></div></div>
+<div class="blk b3" role="presentation"></div>
+</div>
+<div class="cs-end"></div>
 </main>
 <script>
 (function(){
@@ -46,6 +47,24 @@
   });
   check(); window.addEventListener("resize",check);
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(check);
+})();
+</script>
+<script>
+(function(){
+  var h=document.querySelector(".site-head"); if(!h) return;
+  var hero=document.querySelector(".cs-hero"), last=window.scrollY, busy=false;
+  function update(){
+    var y=window.scrollY;
+    if(y<=8){ h.classList.remove("hide"); last=y; }
+    else if(Math.abs(y-last)>=6){
+      h.classList.toggle("hide", y>last);
+      last=y;
+    }
+    if(hero) h.classList.toggle("over", y < hero.offsetHeight-h.offsetHeight);
+    busy=false;
+  }
+  window.addEventListener("scroll",function(){ if(!busy){ busy=true; requestAnimationFrame(update); } },{passive:true});
+  window.addEventListener("resize",update); update();
 })();
 </script>
 </body></html>
