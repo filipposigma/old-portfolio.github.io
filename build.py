@@ -19,49 +19,48 @@ def head(title, desc, p, cls=""):
 </head><body class="{cls}">
 '''
 
-def nav(p, link, over=False):
-    href, label = link
-    return f'<header class="site-head{" over" if over else ""}"><a href="{p}index.html">Filippos Saltsidis</a><a href="{p}{href}">{label}</a></header>\n'
+def nav(p, current=False):
+    """Header: name on the left, 'Info' in the second column (plain text when already on the Info page)."""
+    right = '<span aria-current="page">Info</span>' if current else f'<a href="{p}about.html">Info</a>'
+    return f'<header class="site-head"><a href="{p}index.html">Filippos Saltsidis</a>{right}</header>\n'
 
 def write(path, html):
     full = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     open(full, "w", encoding="utf-8").write(html)
 
-ABOUT = ("about.html", "About")
-HOME_LINK = ("index.html", "About")   # on the About page the right-hand link goes back to Home
+INTRO = ("I'm a London-based UX/UI designer with more than fifteen years of experience in graphic, brand and digital design. "
+         "I started in print and packaging, ran my own studio, and moved steadily into websites, interfaces and design systems, "
+         "working with clients and teams in Greece, Berlin and London.")
 
 # ---------------------------------------------------------------- HOME
 CARD_PH = '<div class="card"><div class="im"></div><p class="cap">{}</p></div>'
 home = head("Filippos Saltsidis · UX/UI designer, London",
-            "Filippos Saltsidis is a London-based UX/UI designer. Selected work.", "", "home-page") + nav("", ABOUT) + f'''<main class="home">
-<div class="filters"><span>branding</span><span>digital design</span><span>print design</span></div>
+            "Filippos Saltsidis is a London-based UX/UI designer. Selected work.", "", "home-page") + nav("") + f'''<main>
+<p class="intro">{INTRO}</p>
 <div class="cards">
 <a class="card" href="work/dashboard.html"><div class="im"><img src="img/home/ccc-cover.jpg" alt="Redesigned Capital City College student dashboard shown on a laptop"></div><p class="cap">Capital City College</p></a>
 {CARD_PH.format("Next Project")}
-{CARD_PH.format("Capital City College")}
+{CARD_PH.format("Next Project")}
 {CARD_PH.format("Next Project")}
 </div>
+<div class="home-end"></div>
 </main>
-<footer class="contact"><a href="{TEL_HREF}">{TEL}</a><a href="mailto:{EMAIL}">{EMAIL}</a></footer>
 </body></html>
 '''
 write("index.html", home)
 
-# ---------------------------------------------------------------- ABOUT
-about = head("About · Filippos Saltsidis",
-             "Filippos Saltsidis is a London-based UX/UI designer with more than fifteen years of experience in graphic, brand and digital design.", "", "aboutpage") + nav("", HOME_LINK) + f'''<main class="ab">
+# ---------------------------------------------------------------- ABOUT (Info)
+about = head("Info · Filippos Saltsidis",
+             "Filippos Saltsidis is a London-based UX/UI designer with more than fifteen years of experience in graphic, brand and digital design.", "", "aboutpage") + nav("", current=True) + f'''<main class="ab">
+<div class="col1">
 <p>I'm Filippos Saltsidis, a London-based UX/UI designer with more than fifteen years of experience in graphic, brand and digital design. I started in print and packaging, ran my own studio, and moved steadily into websites, interfaces and design systems, working with clients and teams in Greece, Berlin and London.</p>
 <p>I work best at the start of a project, when the problem isn't clear yet. Before I open Figma, I try to understand who the product is for, what they're trying to do and where they get stuck. Then I turn that into structure: clear hierarchy, simple flows and components a team can reuse and build. My background in print and brand shows in the details. Typography, spacing and consistency matter to me, and I design with production in mind. After years of working with developers, marketing teams and clients, I'm used to turning a brief into something that ships.</p>
-<ul>
-<li>Understand users and define the problem</li>
-<li>Map flows and structure information</li>
-<li>Design responsive interfaces and prototypes in Figma</li>
-<li>Build reusable components and light design systems</li>
-<li>Hand over to developers with clear specs and states</li>
-</ul>
+</div>
+<div class="col2">
 <p><a href="{TEL_HREF}">{TEL}</a><a href="mailto:{EMAIL}">{EMAIL}</a></p>
 <p>Website Programming<br>Filippos Saltsidis</p>
+</div>
 </main>
 </body></html>
 '''
@@ -70,11 +69,19 @@ write("about.html", about)
 # ---------------------------------------------------------------- CAPITAL CITY COLLEGE
 LEAD = "Students open the college portal to find their next lesson, but the old dashboard buries it in a wall of tiles. I redesigned the Capital City College student dashboard so students can find their next lesson, messages and attendance quickly, and report an absence without hunting for it."
 db = head("Redesigning a college dashboard students actually use · Filippos Saltsidis",
-          "Capital City College student dashboard redesign: a UX/UI concept project.", "../", "cspage") + nav("../", ABOUT, over=True) + f'''<main>
-<div class="cs-hero"><img src="../img/ccc-hero.jpg" alt="Redesigned Capital City College student dashboard on a laptop"></div>
-<div class="cs">
-<h1>Redesigning a college dashboard students actually use</h1>
-<div class="cs-details">
+          "Capital City College student dashboard redesign: a UX/UI concept project.", "../", "cspage") + nav("../") + f'''<main>
+<h1 class="cs-title">Redesigning a college dashboard students actually use</h1>
+<div class="cs-lead">
+<p id="lead">{LEAD}</p>
+<button class="more" type="button" aria-controls="lead" aria-expanded="false" hidden>read more</button>
+</div>
+<div class="cs-blocks">
+<figure class="blk b1" style="margin-top:0"><img src="../img/ccc-dashboard-large.jpg" alt="The redesigned dashboard: next lesson, student services, attendance overview and the report an absence button"></figure>
+<!-- Placeholders from the Figma layout: replace with project images -->
+<div class="blk b2" role="presentation"></div>
+<div class="pair"><div class="blk" role="presentation"></div><div class="blk" role="presentation"></div></div>
+<div class="blk b3" role="presentation"></div>
+</div>
 <ul class="cs-meta">
 <li>Role: UX/UI Designer</li>
 <li>Project: Concept redesign</li>
@@ -82,18 +89,6 @@ db = head("Redesigning a college dashboard students actually use · Filippos Sal
 <li>Tools: Figma</li>
 <li>Platform: Desktop and mobile</li>
 </ul>
-<div class="cs-content">
-<p id="lead">{LEAD}</p>
-<button class="more" type="button" aria-controls="lead" aria-expanded="false" hidden>read more</button>
-</div>
-</div>
-<div class="cs-blocks">
-<figure class="blk b1" style="margin-left:0;margin-right:0"><img src="../img/ccc-dashboard-large.jpg" alt="The redesigned dashboard: next lesson, student services, attendance overview and the report an absence button" loading="lazy"></figure>
-<!-- Placeholders from the Figma layout: replace with project images -->
-<div class="blk b2" role="presentation"></div>
-<div class="pair"><div class="blk" role="presentation"></div><div class="blk" role="presentation"></div></div>
-</div>
-</div>
 </main>
 <script>
 (function(){{
@@ -119,7 +114,7 @@ db = head("Redesigning a college dashboard students actually use · Filippos Sal
 write("work/dashboard.html", db)
 
 # ---------------------------------------------------------------- 404
-nf = head("Page not found · Filippos Saltsidis", "Page not found.", "/", "") + nav("/", ABOUT) + '''<main class="ab"><p>Page not found.</p><p><a href="/index.html">Back to the work</a></p></main>
+nf = head("Page not found · Filippos Saltsidis", "Page not found.", "/", "") + nav("/") + '''<main class="ab"><div class="col1"><p>Page not found.</p><p><a href="/index.html">Back to the work</a></p></div></main>
 </body></html>
 '''
 write("404.html", nf)

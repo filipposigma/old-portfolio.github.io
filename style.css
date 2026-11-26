@@ -1,78 +1,65 @@
-/* Portfolio v7: built from the Figma SVGs (1440 wide). Type: Neue Haas Grotesk Text Pro 55 Roman, 25/32.
-   The licensed font files go in /fonts (see README). Until they are there the site shows Inter, scaled to the same width. */
-@font-face{font-family:"Neue Haas Grotesk Text Pro";font-weight:400;font-style:normal;font-display:swap;src:url("fonts/NHaasGroteskTXPro-55Rg.woff2") format("woff2"),url("fonts/NHaasGroteskTXPro-55Rg.woff") format("woff")}
-@font-face{font-family:"Fallback Grotesk";font-weight:400;font-style:normal;font-display:swap;src:url("fonts/Inter-Regular.woff") format("woff");size-adjust:96.9%}
+/* Portfolio v8: built from the Figma SVGs (1440 wide). Type: Inter Medium (open licence, self-hosted). */
+@font-face{font-family:"Inter";font-weight:500;font-style:normal;font-display:swap;src:url("fonts/Inter-Medium.woff") format("woff")}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#EDEDED;color:#000;font-family:"Neue Haas Grotesk Text Pro","Fallback Grotesk",Helvetica,Arial,sans-serif;font-weight:400;font-size:17px;line-height:24px;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0;background:#EDEDED;color:#000;font-family:Inter,Helvetica,Arial,sans-serif;font-weight:500;font-size:16px;line-height:18px;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:inherit;text-decoration:none}
 a:hover{text-decoration:underline}
 a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offset:4px}
 img{display:block;max-width:100%}
 p,ul,h1,h2{margin:0;padding:0}
 ul{list-style:none}
+main{flex:1}
 
 /* ---------- header ---------- */
-.site-head{display:flex;justify-content:space-between;align-items:flex-start;padding:25px 20px 19px;font-size:19px;line-height:24px}
-.site-head.over{color:#000}
+.site-head{display:flex;justify-content:space-between;padding:16px 20px 0}
 
 /* ---------- home ---------- */
-.home{padding:0 20px;flex:1}
-.filters{display:flex;padding-top:90px;font-size:17px;line-height:25px}
-.filters span{margin-right:30px}
-.cards{display:grid;grid-template-columns:1fr;gap:60px;margin-top:40px}
+.intro{padding:0 20px;margin-top:17px}
+.cards{display:grid;grid-template-columns:1fr;gap:40px;padding:0 20px;margin-top:16px}
 .card{display:block}
 .card:hover{text-decoration:none}
-.card .im{aspect-ratio:1/1;background:#C9C9C8;overflow:hidden}
+.card .im{aspect-ratio:690/480;background:#C9C9C8;overflow:hidden}
 .card .im img{width:100%;height:100%;object-fit:cover}
-.card .cap{margin-top:14px}
-.contact{padding:80px 20px 30px;font-size:25px;line-height:32px}
-.contact a{display:block;width:max-content}
+.card .cap{margin-top:16px}
+.home-end{height:60px}
 
 /* ---------- about ---------- */
-.ab{padding:60px 20px 80px;flex:1;max-width:100%}
-.ab p,.ab ul{margin:0 0 24px;max-width:1258px}
-.ab li{position:relative;padding-left:37px}
-.ab li::before{content:"\2022";position:absolute;left:15px}
+.ab{padding:40px 20px 80px;display:grid;grid-template-columns:1fr;gap:32px;font-size:17px;line-height:24px}
+.ab p{margin:0 0 24px}
 .ab a{display:block;width:max-content}
+.ab .col2 p:last-child{margin:0}
 
 /* ---------- case study ---------- */
 body.cspage{background:#fff}
-.cs-hero{position:relative;width:100%;height:0;padding:0 0 68.599%;overflow:hidden}
-.cs-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.cs{padding:0 20px 60px}
-.cs h1{font-size:25.5px;line-height:32px;font-weight:400;margin:25px 0 30px;max-width:1024px}
-.cs-details{display:grid;grid-template-columns:1fr;gap:24px}
-.cs-meta{font-size:14px;line-height:18px}
-.cs-content p{margin:0 0 24px}
-.cs-content p.clamp{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.more{display:inline-block;padding:0;margin:0;background:none;border:0;font:inherit;letter-spacing:inherit;color:inherit;text-decoration:underline;cursor:pointer}
+.cs-title{padding:40px 20px 0;text-align:center;font-size:25.5px;line-height:32px;font-weight:500;color:#702DFF}
+.cs-lead{padding:0 20px;margin:24px auto 0;text-align:center;font-size:17px;line-height:24px}
+.cs-lead p.clamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.more{display:inline-block;padding:0;margin:12px 0 0;background:none;border:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
 .more[hidden]{display:inline-block;visibility:hidden}
-.cs-blocks{margin-top:60px}
+.cs-blocks{padding:0 20px;margin-top:60px}
 .blk{width:100%;margin:0 0 60px;background:#B0B0B0;overflow:hidden}
 .blk img{width:100%;height:100%;object-fit:cover}
 .blk.b1{aspect-ratio:1400/790}
-.blk.b2{aspect-ratio:1400/930}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0}
-.pair .blk{aspect-ratio:548/612;background:#7A7F8B;margin:0}
+.blk.b2,.blk.b3{aspect-ratio:1400/930}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pair .blk{aspect-ratio:548/612;margin:0}
+.pair{margin:0 0 60px}
+.cs-meta{padding:0 20px 80px}
 
 @media(min-width:768px){
- body{font-size:25px;line-height:32px}
- .site-head{font-size:25px;line-height:30px}
- .filters{font-size:25px;line-height:32px;padding-top:123px}
- .cards{grid-template-columns:1fr 1fr;gap:123.9px 20px;margin-top:52px}
- .card .cap{margin-top:22px}
- .contact{font-size:37.7px;line-height:47px;padding:145px 20px 39px}
- .ab{padding-top:122px;padding-bottom:290px}
- .ab p,.ab ul{margin-bottom:32px}
- .cs-hero{padding-bottom:46.9444%}
- .cs{padding-bottom:94px}
- .cs h1{font-size:37px;line-height:40px;margin:28px 0 50px}
- .cs-details{grid-template-columns:28.2% minmax(0,950px);gap:0}
- .cs-meta{font-size:18px;line-height:23px}
- .cs-content p{margin-bottom:32px}
- .cs-blocks{margin-top:141px}
- .blk{margin-bottom:100px}
- .pair{margin:0 10.1429% 0;gap:20px}
+ body{font-size:16px}
+ .site-head{display:grid;grid-template-columns:50.893% 1fr}
+ .cards{grid-template-columns:1fr 1fr;gap:71.057px 20px}
+ .home-end{height:128px}
+ .ab{grid-template-columns:50.893% 1fr;gap:0;font-size:25px;line-height:32px;padding:69px 20px 80px}
+ .ab .col1{max-width:687px}
+ .ab p{margin-bottom:32px}
+ .cs-title{font-size:37px;line-height:46px;padding-top:69px}
+ .cs-lead{max-width:875px;font-size:25px;line-height:32px;margin-top:31px}
+ .cs-blocks{margin-top:101px}
+ .blk,.pair{margin-bottom:100px}
+ .pair{margin-left:10.1429%;margin-right:10.1429%;gap:20px}
+ .blk.b3{margin-bottom:17px}
+ .cs-meta{padding-bottom:220px}
 }
-@media(min-width:1400px){.site-head.over{position:absolute;left:0;right:0;top:0;z-index:2;color:#fff}}
